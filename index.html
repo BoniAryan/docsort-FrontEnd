@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Sorting Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .document-card {
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            object-position: top;
+        }
+        .preview-container {
+            max-height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+        .search-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #e9ecef;
+            border-radius: 16px;
+            padding: 5px 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+        .document-type {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        #no-results {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">DocSort</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Categories</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Document Library</h1>
+        
+        <!-- Search Section -->
+        <div class="search-container">
+            <div class="row">
+                <div class="col-md-8 mb-3 mb-md-0">
+                    <div class="input-group">
+                        <input type="text" id="search-input" class="form-control" placeholder="Search documents by title, description, or keywords...">
+                        <!-- <button class="btn btn-primary" id="search-button"> -->
+                            <!-- <i class="bi bi-search"></i> Search -->
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="filter-type">
+                        <option value="all">All Types</option>
+                        <option value="pdf">PDF</option>
+                        <option value="png">PNG</option>
+                        <option value="jpg">JPG</option>
+                        <option value="doc">DOC</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Document Cards -->
+        <div class="row" id="document-container">
+            <!-- Cards will be populated by Django template logic -->
+          
+<!-- Single Document Card -->
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card document-card h-100">
+      <div class="preview-container">
+        <img src="" class="card-img-top" alt="Document Title">
+        <span class="document-type">PDF</span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">dsjvhfkjdskvjb  hh humara Title</h5>
+        <p class="card-text">Document description goes here. This is a brief summary of what the document contains.</p>
+        <div class="keywords mb-3">
+          <span class="tag">keyword1</span>
+          <span class="tag">keyword2</span>
+          <span class="tag">keyword3</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary btn-sm">View Document</button>
+          <small class="text-muted">Version: 1.0</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Single Document Card -->
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card document-card h-100">
+      <div class="preview-container">
+        <img src="" class="card-img-top" alt="Document Title">
+        <span class="document-type">PDF</span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Document Title</h5>
+        <p class="card-text">Document description goes here. This is a brief summary of what the document contains.</p>
+        <div class="keywords mb-3">
+          <span class="tag">keyword1</span>
+          <span class="tag">keyword2</span>
+          <span class="tag">keyword3</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary btn-sm">View Document</button>
+          <small class="text-muted">Version: 1.0</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Single Document Card -->
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card document-card h-100">
+      <div class="preview-container">
+        <img src="" class="card-img-top" alt="Document Title">
+        <span class="document-type">PDF</span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Document Title</h5>
+        <p class="card-text">Document description goes here. This is a brief summary of what the document contains.</p>
+        <div class="keywords mb-3">
+          <span class="tag">maha</span>
+          <span class="tag">keyword2</span>
+          <span class="tag">keyword3</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary btn-sm">View Document</button>
+          <small class="text-muted">Version: 1.0</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Single Document Card -->
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card document-card h-100">
+      <div class="preview-container">
+        <img src="" class="card-img-top" alt="Document Title">
+        <span class="document-type">PDF</span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Document Title</h5>
+        <p class="card-text">Document description goes here. This is a brief summary of what the document contains.</p>
+        <div class="keywords mb-3">
+          <span class="tag">chudu</span>
+          <span class="tag">keyword2</span>
+          <span class="tag">keyword3</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary btn-sm">View Document</button>
+          <small class="text-muted">Version: 1.0</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Single Document Card -->
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card document-card h-100">
+      <div class="preview-container">
+        <img src="" class="card-img-top" alt="Document Title">
+        <span class="document-type">PDF</span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Document Title</h5>
+        <p class="card-text">Document description goes here. This is a brief summary of what the document contains.</p>
+        <div class="keywords mb-3">
+          <span class="tag">raja</span>
+          <span class="tag">keyword2</span>
+          <span class="tag">keyword3</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary btn-sm">View Document</button>
+          <small class="text-muted">Version: 1.0</small>
+        </div>
+      </div>
+    </div>
+  </div>
+          
+                
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <h3>No documents found</h3>
+                <p>Upload some documents to get started</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div id="no-results" class="mt-4">
+            <h3>No documents found matching your search</h3>
+            <p>Try different keywords or clear your search filters</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Document search functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Get DOM elements
+  const searchInput = document.getElementById('search-input');
+  const filterTypeSelect = document.getElementById('filter-type');
+  const documentContainer = document.getElementById('document-container');
+  const noResultsMessage = document.getElementById('no-results');
+  
+  // Function to perform search on each keystroke
+  function performSearch() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    const filterType = filterTypeSelect.value.toLowerCase();
+    
+    // Get all document cards
+    const documentCards = document.querySelectorAll('.col-md-6.col-lg-4.mb-4');
+    
+    let visibleCount = 0;
+    
+    // Loop through each card and check if it matches the search criteria
+    documentCards.forEach(card => {
+      // Get the text content from various elements within the card
+      const title = card.querySelector('.card-title').textContent.toLowerCase();
+      const description = card.querySelector('.card-text').textContent.toLowerCase();
+      const docType = card.querySelector('.document-type').textContent.toLowerCase();
+      
+      // Get all tags/keywords text
+      let keywords = '';
+      card.querySelectorAll('.tag').forEach(tag => {
+        keywords += tag.textContent.toLowerCase() + ' ';
+      });
+      
+      // Check if card matches search term
+      const matchesSearch = searchTerm === '' || 
+                            title.includes(searchTerm) || 
+                            description.includes(searchTerm) || 
+                            keywords.includes(searchTerm);
+      
+      // Check if card matches selected document type filter
+      const matchesType = filterType === 'all' || docType.includes(filterType);
+      
+      // Show or hide the card based on both conditions
+      if (matchesSearch && matchesType) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    
+    // Show "no results" message if no cards are visible
+    if (visibleCount === 0) {
+      noResultsMessage.style.display = 'block';
+    } else {
+      noResultsMessage.style.display = 'none';
+    }
+  }
+  
+  // Add event listeners for both search input and filter type select
+  searchInput.addEventListener('input', performSearch);
+  filterTypeSelect.addEventListener('change', performSearch);
+  
+  // Initial call to set up the view correctly
+  performSearch();
+});
+    </script>
+</body>
+</html>
